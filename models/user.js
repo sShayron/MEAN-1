@@ -1,5 +1,6 @@
 
 var mongoose = require('mongoose');
+var mongooseUniqueValidator = require('mongoose-unique-validator');
 var Schema = mongoose.Schema;
 
 var userSchema = new Schema({
