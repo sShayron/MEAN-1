@@ -1,10 +1,10 @@
 var express = require('express');
 var router = express.Router();
+var User = required('../models/user');
 
 router.get('/', function (req, res, next) {
     res.render('index');
 });
-
 
 router.get('/node-mongodb-mongoose-user', function (req, res, next) {
     res.render('node');
