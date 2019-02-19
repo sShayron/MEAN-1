@@ -5,13 +5,23 @@ router.get('/', function (req, res, next) {
     res.render('index');
 });
 
-router.get('/message/:msg', function (req, res, next) {
-    res.render('node', {message: req.params.msg});
+
+router.get('/node-mongodb-mongoose-user', function (req, res, next) {
+    res.render('node');
 });
 
-router.post('/message', function (req, res, next) {
-    var msg = req.body.message;
-    res.redirect('/message/' + msg);
+router.post('/node-mongodb-mongoose-user', function (req, res, next) {
+    var emailVar = req.body.emailBody;
+    var userObject = new User({
+        firstName: 'Shayron',
+        lastName: 'Aguair',
+        password: 's3cr37',
+        email: emailVar
+    });
+
+    userObject.save();
+
+    res.redirect('/node-mongodb-mongoose-user');
 });
 
 module.exports = router;
