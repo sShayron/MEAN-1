@@ -1,0 +1,10 @@
+<h1>Get user</h1>
+<form action="/get-user" method="post">
+    <input type="text" name="email">
+    <button type="submit">Enviar</button>
+</form>
+<div class="user-infos">
+    <div>{{ user.firstName }}</div>
+    <div>{{ user.lastName }}</div>
+    <div>{{ user.email }}</div>
+</div>
