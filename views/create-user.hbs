@@ -1,8 +1,28 @@
 <h1>Create user</h1>
 <form action="/api/create-user" method="post">
-    <input type="text" name="firstName">
-    <input type="text" name="lastName">
-    <input type="password" name="password">
-    <input type="text" name="email">
+    <div class="form-field">
+        <label for="firstName">
+            <div>First name</div>
+            <input type="text" name="firstName">
+        </label>
+    </div>
+    <div class="form-field">
+        <label for="lastName">
+            <div>Last name</div>
+            <input type="text" name="lastName">
+        </label>
+    </div>
+    <div class="form-field">
+        <label for="email">
+            <div>Email</div>
+            <input type="text" name="email">
+        </label>
+    </div>
+    <div class="form-field">
+        <label for="password">
+            <div>Password</div>
+            <input type="password" name="password">
+        </label>
+    </div>
     <button type="submit">Enviar</button>
 </form>
