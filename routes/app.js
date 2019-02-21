@@ -6,22 +6,22 @@ router.get('/', function (req, res, next) {
     res.render('index');
 });
 
-router.get('/node-mongodb-mongoose-user', function (req, res, next) {
-    res.render('node');
+router.get('/create-user', function (req, res, next) {
+    res.render('create-user');
 });
 
-router.post('/node-mongodb-mongoose-user', function (req, res, next) {
-    var emailVar = req.body.emailBody;
-    var userObject = new User({
-        firstName: 'Shayron',
-        lastName: 'Aguair',
-        password: 's3cr37',
-        email: emailVar
+router.post('/create-user', function (req, res, next) {
+    const { emafirstName, lastName, password, email } = req.body;
+    const userObject = new User({
+        firstNam,
+        lastName,
+        password,
+        email
     });
 
     userObject.save();
 
-    res.redirect('/node-mongodb-mongoose-user');
+    res.redirect('/create-user');
 });
 
 module.exports = router;
