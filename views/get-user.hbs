@@ -1,6 +1,11 @@
 <h1>Get user</h1>
 <form action="/api/get-user" method="post">
-    <input type="text" name="email">
+    <div class="form-field">
+        <label for="email">
+            <div>Email to search:</div>
+            <input type="text" name="email">
+        </label>
+    </div>
     <button type="submit">Enviar</button>
 </form>
 <div class="user-infos">
