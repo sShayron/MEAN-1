@@ -10,17 +10,21 @@ router.get('/get-user', function (req, res, next) {
     res.render('get-user');
 });
 
-router.post('/api/get-user', function (req, res, next) {
+router.post('/get-user', function (req, res, next) {
     const { email } = req.body;
-    const user = User.find({ email });
-    res.render('get-user', { user });
+    User.findOne({ email }, function (err, docs) {
+        if (err) {
+            return;
+        }
+        res.render('get-user', { user: docs });
+    });
 });
 
 router.get('/create-user', function (req, res, next) {
     res.render('create-user');
 });
 
-router.post('/api/create-user', function (req, res, next) {
+router.post('/create-user', function (req, res, next) {
     const { firstName, lastName, password, email } = req.body;
     const userObject = new User({
         firstName,
