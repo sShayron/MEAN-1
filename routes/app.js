@@ -3,7 +3,7 @@ var router = express.Router();
 var User = require('../models/user');
 
 router.get('/', function (req, res, next) {
-    res.redirect('/create-user');
+    res.render('/index');
 });
 
 router.get('/get-user', function (req, res, next) {
