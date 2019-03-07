@@ -1,28 +1,8 @@
 <div class="row">
     <div class="container">
         <div class="col-md-8 col-md-offset-2">
-            <div class="form-group">
-                <div class="input-group">
-                    <input class="form-control" type="text" [(ngModel)]="message.content">
-                </div>
-                <div class="input-group">
-                    <input class="form-control" type="text" [(ngModel)]="message.author">
-                </div>
-            </div>
-            <article class="panel panel-default">
-                <div class="panel-body">
-                    {{ message.content }}
-                </div>
-                <footer class="panel-footer">
-                    <div class="author">
-                        {{ message.author }}
-                    </div>
-                    <div class="config">
-                        <a href="#">Edit</a>
-                        <a href="#">Delete</a>
-                    </div>
-                </footer>
-            </article>
+            <app-message></app-message>
+            <app-form></app-form>
         </div>
     </div>
 </div>
