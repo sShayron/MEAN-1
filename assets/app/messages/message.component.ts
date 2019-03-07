@@ -1,4 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, Input, Output } from '@angular/core';
+import { Message } from './message.model';
+import { EventEmitter } from '@angular/core';
 
 @Component({
     selector: 'app-message',
@@ -19,8 +21,34 @@ import { Component } from '@angular/core';
     `]
 })
 export class MessageComponent {
-    message = {
-        content: 'ESTAAAA FERA',
-        author: 'Grande fera'
+    @Input()
+    message: Message = new Message({
+        content: '',
+        author: ''
+    });
+
+    @Output()
+    updateMessage = new EventEmitter<Message>();
+
+    @Output()
+    removeMessage = new EventEmitter<Message>();
+
+    copiedMessage: Message = new Message();
+
+    isEditing: boolean = false;
+
+    editMessage() {
+        this.copiedMessage = new Message({...this.message});
+        this.isEditing = true;
+    }
+
+    onEdit() {
+        this.updateMessage.emit(this.copiedMessage);
+        this.isEditing = false;
+        this.copiedMessage = new Message();
+    }
+
+    onRemove() {
+        this.removeMessage.emit(this.message);
     }
 }

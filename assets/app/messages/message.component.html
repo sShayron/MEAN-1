@@ -1,10 +1,18 @@
 <div class="app-message">
-    <div class="form-group">
+    {{ copiedMessage.content }}
+    <div class="form-group" *ngIf="isEditing">
         <div class="input-group">
-            <input class="form-control" type="text" [(ngModel)]="message.content">
+            <input class="form-control" type="text" [(ngModel)]="copiedMessage.content">
         </div>
         <div class="input-group">
-            <input class="form-control" type="text" [(ngModel)]="message.author">
+            <input class="form-control" type="text" [(ngModel)]="copiedMessage.author">
+        </div>
+        <div class="input-group">
+            <button
+                type="button"
+                class="btn btn-primary"
+                (click)="onEdit()"
+            >Save</button>
         </div>
     </div>
     <article class="panel panel-default">
@@ -16,8 +24,20 @@
                 {{ message.author }}
             </div>
             <div class="config">
-                <a href="#">Edit</a>
-                <a href="#">Delete</a>
+                <button
+                    type="button"
+                    class="btn btn-info"
+                    (click)="editMessage()"
+                >
+                    Edit
+                </button>
+                <button
+                    type="button"
+                    class="btn btn-warning"
+                    (click)="onRemove()"
+                >
+                    Delete
+                </button>
             </div>
         </footer>
     </article>

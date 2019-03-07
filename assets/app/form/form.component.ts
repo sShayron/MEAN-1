@@ -18,5 +18,10 @@ import { Component } from '@angular/core';
     `]
 })
 export class FormComponent {
-
+    showInfos: boolean = true;
+    name: string;
+    email: string
+    username: string;
+    password: string;
+    confirmPassword: string;
 }
