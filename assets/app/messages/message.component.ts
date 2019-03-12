@@ -4,20 +4,7 @@ import { Message } from './message.model';
 @Component({
     selector: 'app-message',
     templateUrl: './message.component.html',
-    styles: [`
-        .author {
-            display: inline-block;
-            font-size: 12px;
-            font-style: italic;
-            width: 80%;
-        }
-        .config {
-            display: inline-block;
-            text-align: right;
-            font-size: 12px;
-            width: 19%;
-        }
-    `]
+    styleUrls: ['./message.css']
 })
 export class MessageComponent {
     @Input()
