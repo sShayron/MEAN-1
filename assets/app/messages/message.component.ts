@@ -19,19 +19,8 @@ export class MessageComponent {
     @Output()
     removeMessage = new EventEmitter<Message>();
 
-    copiedMessage: Message = new Message();
-
-    isEditing: boolean = false;
-
-    editMessage() {
-        this.copiedMessage = new Message({...this.message});
-        this.isEditing = true;
-    }
-
     onEdit() {
-        this.updateMessage.emit(this.copiedMessage);
-        this.isEditing = false;
-        this.copiedMessage = new Message();
+        this.updateMessage.emit(this.message);
     }
 
     onRemove() {

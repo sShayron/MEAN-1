@@ -4,6 +4,7 @@ import { FormsModule } from '@angular/forms';
 
 import { AppComponent } from "./app.component";
 import { MessageComponent } from './messages/message.component';
+import { MessageListComponent } from './messages/message-list.component';
 import { FormComponent } from './form/form.component';
 import { ModalComponent } from './modal/modal.component';
 
@@ -11,6 +12,7 @@ import { ModalComponent } from './modal/modal.component';
     declarations: [
         AppComponent,
         MessageComponent,
+        MessageListComponent,
         FormComponent,
         ModalComponent
     ],

@@ -1,0 +1,29 @@
+<div class="message-list">
+    <app-message
+        *ngFor="let message of messageService.getMessages()"
+        [message]="message"
+        (updateMessage)="onEditMessage($event)"
+        (removeMessage)="onRemoveMessage($event)"
+    ></app-message>
+    <app-modal
+        [open]="isEditing || isAdding"
+        [title]="isEditting ? 'Edit message' : 'Add message'"
+        (close)="close"
+    >
+        <div class="form-group">
+            <div class="input-group">
+                <textarea class="form-control" type="text" [(ngModel)]="copiedMessage.content"></textarea>
+            </div>
+            <div class="input-group">
+                <input class="form-control" type="text" [(ngModel)]="copiedMessage.author">
+            </div>
+            <div class="input-group">
+                <button
+                    type="button"
+                    class="btn btn-primary"
+                    (click)="onDone()"
+                >Save</button>
+            </div>
+        </div>
+    </app-modal>
+</div>
