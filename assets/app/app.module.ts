@@ -7,6 +7,9 @@ import { MessageComponent } from './messages/message.component';
 import { MessageListComponent } from './messages/message-list.component';
 import { FormComponent } from './form/form.component';
 import { ModalComponent } from './modal/modal.component';
+import { routes } from './app.routing';
+import { HeaderComponent } from './header/header.component';
+import { MessageFormComponent } from './messages/message-form.component';
 
 @NgModule({
     declarations: [
@@ -14,9 +17,11 @@ import { ModalComponent } from './modal/modal.component';
         MessageComponent,
         MessageListComponent,
         FormComponent,
-        ModalComponent
+        ModalComponent,
+        HeaderComponent,
+        MessageFormComponent
     ],
-    imports: [BrowserModule, FormsModule],
+    imports: [BrowserModule, FormsModule, routes],
     bootstrap: [AppComponent]
 })
 export class AppModule {

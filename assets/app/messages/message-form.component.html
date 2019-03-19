@@ -1,0 +1,13 @@
+<div>
+    <form (ngSubmit)="onSubmit(messageForm)" #messageForm="ngForm" ngNativeValidate>
+        <div class="form-group">
+            <label for="message">Conteudo</label>
+            <input type="text"
+                id="message-content"
+                class="form-control"
+                ngModel
+                name="messageContent"
+            >
+        </div>
+    </form>
+</div>
