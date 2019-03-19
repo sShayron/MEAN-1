@@ -8,7 +8,7 @@
     <app-modal
         [open]="isEditing || isAdding"
         [title]="isEditting ? 'Edit message' : 'Add message'"
-        (close)="close"
+        (close)="close()"
     >
         <div class="form-group">
             <div class="input-group">
