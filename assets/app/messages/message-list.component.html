@@ -1,11 +1,12 @@
 <div class="message-list">
-    <app-message-form></app-message-form>
     <app-message
         *ngFor="let message of messageService.getMessages()"
         [message]="message"
         (updateMessage)="onEditMessage($event)"
         (removeMessage)="onRemoveMessage($event)"
     ></app-message>
+
+    <app-message-form></app-message-form>
     <app-modal
         [open]="isEditing || isAdding"
         [title]="isEditting ? 'Edit message' : 'Add message'"
