@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { AppComponent } from "./app.component";
 import { MessageComponent } from './messages/message.component';
@@ -29,7 +29,7 @@ import { SignUpComponent } from './auth/signup.component';
         SignInComponent,
         SignUpComponent
     ],
-    imports: [BrowserModule, FormsModule, routes],
+    imports: [BrowserModule, FormsModule, ReactiveFormsModule, routes],
     bootstrap: [AppComponent]
 })
 export class AppModule {

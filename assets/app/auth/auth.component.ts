@@ -7,13 +7,13 @@ import { Component } from "@angular/core";
             <nav>
                 <ul class="nav nav-tabs">
                     <li routerLinkActive="active">
-                        <a [routerLink]="['signup']">SignUp</a>
+                        <a [routerLink]="['signup']">Sign Up</a>
                     </li>
                     <li routerLinkActive="active">
-                        <a [routerLink]="['signin']">SignUp</a>
+                        <a [routerLink]="['signin']">Sign In</a>
                     </li>
                     <li routerLinkActive="active">
-                        <a [routerLink]="['logout']">SignUp</a>
+                        <a [routerLink]="['logout']">Log out</a>
                     </li>
                 </ul>
             </nav>

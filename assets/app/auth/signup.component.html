@@ -1,0 +1,23 @@
+<div class="signup">
+    <form [formGroup]="signUpForm" (ngSubmit)="onSubmit()">
+        <div class="form-group">
+            <label for="nome">Nome:</label>
+            <input class="form-control" type="text" id="nome" formControlName="nome">
+        </div>
+        <div class="form-group">
+            <label for="sobrenome">Sobrenome:</label>
+            <input class="form-control" type="text" id="sobrenome" formControlName="sobrenome">
+        </div>
+        <div class="form-group">
+            <label for="email">Email:</label>
+            <input class="form-control" type="text" id="email" formControlName="email">
+        </div>
+        <div class="form-group">
+            <label for="senha">Senha:</label>
+            <input class="form-control" type="text" id="senha" formControlName="senha">
+        </div>
+        <button class="btn btn-primary" type="submit">
+            Cadastrar
+        </button>
+    </form>
+</div>
