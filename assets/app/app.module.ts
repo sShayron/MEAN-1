@@ -10,6 +10,10 @@ import { ModalComponent } from './modal/modal.component';
 import { routes } from './app.routing';
 import { HeaderComponent } from './header/header.component';
 import { MessageFormComponent } from './messages/message-form.component';
+import { AuthComponent } from './auth/auth.component';
+import { LogOutComponent } from './auth/logout.component';
+import { SignInComponent } from './auth/signin.component';
+import { SignUpComponent } from './auth/signup.component';
 
 @NgModule({
     declarations: [
@@ -19,7 +23,11 @@ import { MessageFormComponent } from './messages/message-form.component';
         FormComponent,
         ModalComponent,
         HeaderComponent,
-        MessageFormComponent
+        MessageFormComponent,
+        AuthComponent,
+        LogOutComponent,
+        SignInComponent,
+        SignUpComponent
     ],
     imports: [BrowserModule, FormsModule, routes],
     bootstrap: [AppComponent]
