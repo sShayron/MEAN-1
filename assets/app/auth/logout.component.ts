@@ -4,7 +4,7 @@ import { Component } from '@angular/core';
     selector: 'logout',
     template: `
     <div class="logout">
-        Log out
+        <button class="btn btn-danger">Logout</button>
     </div>`
 })
 export class LogOutComponent {

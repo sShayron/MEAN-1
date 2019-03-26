@@ -20,7 +20,7 @@ export class SignUpComponent implements OnInit {
                 Validators.required,
                 Validators.pattern('[a-zA-Z0-9\-\_\.]+@[a-zA-Z0-9\-\_\.]+')
             ]),
-            senha: new FormControl(null, Validators.required);
+            senha: new FormControl(null, Validators.required)
         })
     }
 }
