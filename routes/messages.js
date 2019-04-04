@@ -28,14 +28,43 @@ router.get('/', function(_, res) {
                 return res.status(500).json({
                     errorMessage: 'Erro ao recuperar.',
                     error: err
-                })
+                });
             }
 
             res.status(200).json({
                 successMessage: 'Mensagens recuperadas com sucesso.',
                 data: result
             });
-        })
+        });
 });
+
+router.delete('/:id', function(req, res) {
+    Message.findById(req.params.id, function(err, result) {
+        if (err) {
+            return res.status(500).json({
+                errorMessage: 'Erro ao localizar mensagem',
+                error: err
+            });
+        }
+        if (!result) {
+            return res.status(404).json({
+                errorMessage: 'Mensagem nao encontrada'
+            });
+        }
+
+        result.remove(function(err, result) {
+            if (err) {
+                return res.status(500).json({
+                    errorMessage: 'Erro ao deletar mensagem',
+                    error: err
+                });
+            }
+            res.status(200).json({
+                successMessage: 'Mensagem deletada com sucesso',
+                data: result
+            });
+        });
+    });
+})
 
 module.exports = router;
