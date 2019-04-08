@@ -1,10 +1,11 @@
 export class User {
-    email: string;
-    password: string;
-    firstName: string;
-    lastName: string;
+  _id: string;
+  email: string;
+  password: string;
+  firstName: string;
+  lastName: string;
 
-    constructor(props = {}) {
-        Object.assign(this, props);
-    }
+  constructor(props = {}) {
+    Object.assign(this, props);
+  }
 }

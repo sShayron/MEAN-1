@@ -1,0 +1,46 @@
+const express = require('express');
+const router = express.Router();
+const jwt = require('jsonwebtoken');
+const bcrypt = require('bcryptjs');
+const User = require('../models/user');
+const config = require('./config');
+
+router.post('/', function(req, res) {
+  const password = req.body.password;
+
+  User.findOne({ email: req.body.email }, function (err, user) {
+    if (err) {
+      return res.status(500).json({
+        errorMessage: 'Erro ao recuperar usuario',
+        error: err
+      });
+    }
+
+    if (!user) {
+      return res.status(404).json({
+        errorMessage: 'Usuario nao encontrado'
+      });
+    }
+
+    if (!bcrypt.compareSync(String(password), user.password)) {
+      return res.status(401).json({
+        errorMessage: 'Usuario ou senha invalido'
+      });
+    }
+
+    const expiresIn = 24 * 60 * 60;
+    const accessToken = jwt.sign({
+          id: user._id
+        }, config.secret, {
+      expiresIn:  expiresIn
+    });
+
+    return res.status(201).json({
+      successMessage: 'Usuario autenticado com sucesso.',
+      data: user,
+      accessToken
+    });
+  });
+});
+
+module.exports = router;
