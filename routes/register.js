@@ -8,7 +8,9 @@ const User = require('../models/user');
 router.post('/', (req, res) => {
   const newUser = new User({
     firstName: req.body.name,
+    lastName: req.body.lastName,
     email: req.body.email,
+    genre: req.body.genre,
     password: bcrypt.hashSync(req.body.password)
   });
 

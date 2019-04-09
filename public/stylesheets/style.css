@@ -25,3 +25,11 @@ a.danger {
 input.ng-invalid.ng-touched {
   border: 1px solid red;
 }
+
+.alert-danger {
+  padding: 6px 0;
+  width: auto;
+  color: red;
+  border: none !important;
+  background: none !important;
+}

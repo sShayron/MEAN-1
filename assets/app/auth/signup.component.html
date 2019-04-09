@@ -2,19 +2,47 @@
     <form [formGroup]="signUpForm" (ngSubmit)="onSubmit()">
         <div class="form-group">
             <label for="nome">Nome:</label>
-            <input class="form-control" type="text" id="nome" formControlName="nome">
+            <input class="form-control" type="text" id="name" formControlName="name">
+            <div *ngIf="name.invalid && (name.dirty || name.touched)" class="alert alert-danger">
+                <div *ngIf="name.errors.required">
+                    Nome obrigatorio.
+                </div>
+            </div>
         </div>
         <div class="form-group">
             <label for="sobrenome">Sobrenome:</label>
-            <input class="form-control" type="text" id="sobrenome" formControlName="sobrenome">
+            <input class="form-control" type="text" id="lastName" formControlName="lastName">
         </div>
         <div class="form-group">
             <label for="email">Email:</label>
             <input class="form-control" type="text" id="email" formControlName="email">
+            <div *ngIf="email.invalid && (email.dirty || email.touched)" class="alert alert-danger">
+                <div *ngIf="email.errors.required">
+                    Email obrigatorio.
+                </div>
+                <div *ngIf="email.errors.pattern">
+                    Email invalido.
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="genre">Sexo:</label>
+            <label class="center-block"><input type="radio" formControlName="genre" value="masculino">M</label>
+            <label class="center-block"><input type="radio" formControlName="genre" value="feminino">F</label>
+            <div *ngIf="genre.invalid && (genre.dirty || genre.touched)" class="alert alert-danger">
+                <div *ngIf="genre.errors.required">
+                    Sexo obrigatorio.
+                </div>
+            </div>
         </div>
         <div class="form-group">
             <label for="senha">Senha:</label>
-            <input class="form-control" type="text" id="senha" formControlName="senha">
+            <input class="form-control" type="password" id="password" formControlName="password">
+            <div *ngIf="password.invalid && (password.dirty || password.touched)" class="alert alert-danger">
+                <div *ngIf="password.errors.required">
+                    Senha obrigatoria.
+                </div>
+            </div>
         </div>
         <button class="btn btn-primary" type="submit">
             Cadastrar

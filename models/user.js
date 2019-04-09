@@ -20,6 +20,10 @@ var userSchema = new Schema({
     required: true,
     unique: true
   },
+  genre: {
+    type: String,
+    required: false
+  },
   messages: [{
     type: Schema.Types.ObjectId,
     ref: 'Message'

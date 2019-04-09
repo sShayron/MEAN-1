@@ -5,7 +5,6 @@ import { AuthService } from './auth.service';
 @Component({
   selector: "signin",
   templateUrl: "./signin.component.html",
-  providers: [AuthService],
   styles: [
     `
       .server-error {

@@ -33,19 +33,26 @@ export class AuthService {
       return;
     }
 
-    this.router.navigate(['/auth/signin']);
+    if (router.url == '/mensagens') {
+      alert('Voce precisa estar logado para acessar as mensagens');
+      this.router.navigate(['/auth']);
+    }
+  }
+
+  setSession(user, token) {
+    this.user = new User(user);
+    this.isAuthenticated = true;
+    this.token = token;
+    localStorage.setItem('token', this.token);
+    localStorage.setItem('user', JSON.stringify(this.user));
+
+    this.router.navigateByUrl('/mensagens');
   }
 
   login({ email, password }) {
     this.http.post('/login', { email, password }).subscribe(
       (res: LoginSuccessResponse) => {
-        this.user = new User(res.data);
-        this.isAuthenticated = true;
-        this.token = res.accessToken;
-        localStorage.setItem('token', this.token);
-        localStorage.setItem('user', JSON.stringify(this.user));
-
-        this.router.navigate(['/mensagens']);
+        this.setSession(res.data, res.accessToken);
       },
       ({ error }: LoginErrorResponse) => {
         this.authError = error.errorMessage;
@@ -61,6 +68,18 @@ export class AuthService {
     this.token = '';
     this.user = new User();
 
-    this.router.navigate(['/auth/sigin']);
+    this.router.navigate(['/auth']);
+  }
+
+  register({ name, lastName = '', email, password, genre }) {
+    this.http.post('/register', { name, lastName, email, password, genre }).subscribe(
+      (res: LoginSuccessResponse) => {
+        this.setSession(res.data, res.accessToken);
+      },
+      ({ error }: LoginErrorResponse) => {
+        this.authError = error.errorMessage;
+        this.error = true;
+      }
+    );
   }
 }
