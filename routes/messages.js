@@ -1,28 +1,31 @@
 var express = require('express');
 var router = express.Router();
 var Message = require('../models/message');
+var socketIo = require('../socket');
 
 router.post('/', function (req, res) {
-  var message = new Message({
-    content: req.body.content
-  });
+  var message = new Message(req.body);
+
   message.save(function (err, result) {
     if (err) {
       return res.status(500).json({
-        errorMessage: 'Erro ao gravar no banco de dados.',
+        errorMessage: 'Erro no servidor.',
         error: err
       });
     }
 
-    res.status(201).json({
+    return res.status(201).json({
       successMessage: 'Mensagem criada com sucesso.',
       data: result
-    });
+    }).end(
+      socketIo.con.emit('new-message', result)
+    );
   });
 });
 
 router.get('/', function (_, res) {
   Message.find()
+    .populate('user')
     .exec(function (err, result) {
       if (err) {
         return res.status(500).json({
@@ -31,7 +34,7 @@ router.get('/', function (_, res) {
         });
       }
 
-      res.status(200).json({
+      return res.status(200).json({
         successMessage: 'Mensagens recuperadas com sucesso.',
         data: result
       });
@@ -59,10 +62,12 @@ router.delete('/:id', function (req, res) {
           error: err
         });
       }
-      res.status(200).json({
+      return res.status(200).json({
         successMessage: 'Mensagem deletada com sucesso',
         data: result
-      });
+      }).end(
+        socketIo.con.emit('delete-message', result)
+      );
     });
   });
 })

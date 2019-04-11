@@ -30,7 +30,7 @@ export class MessageService {
     return this.http
       .get('/message/', { headers: this.headers })
       .subscribe(
-        (res: { data: Message[] }) => this.buckAddMessages(res.data),
+        (res: { data: Message[] }) => this.messagesService = res.data,
         err => handleErrors(err)
       );
   }
@@ -38,13 +38,13 @@ export class MessageService {
   addMessage(message: Message): Observable<any> {
     const idx = this.messagesService.map(m => m._id).indexOf(message._id);
     if (idx > -1) {
-      console.error('Message already exists');
+      console.error('Tentativa de adicionar mensagem duplicada');
       return;
     }
     this.http
       .post(
         '/message/',
-        { content: message.content },
+        message,
         { headers: this.headers }
       )
       .subscribe(

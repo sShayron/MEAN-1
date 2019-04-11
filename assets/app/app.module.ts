@@ -6,7 +6,6 @@ import { HttpClientModule } from '@angular/common/http';
 import { AppComponent } from './app.component';
 import { MessageComponent } from './messages/message.component';
 import { MessageListComponent } from './messages/message-list.component';
-import { FormComponent } from './form/form.component';
 import { ModalComponent } from './modal/modal.component';
 import { routes } from './app.routing';
 import { HeaderComponent } from './header/header.component';
@@ -20,7 +19,6 @@ import { SignUpComponent } from './auth/signup.component';
     AppComponent,
     MessageComponent,
     MessageListComponent,
-    FormComponent,
     ModalComponent,
     HeaderComponent,
     MessageFormComponent,

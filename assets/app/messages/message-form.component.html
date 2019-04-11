@@ -1,15 +1,12 @@
-<div>
+<div class="message-form">
     <form (ngSubmit)="onSubmit(messageForm)" #messageForm="ngForm" ngNativeValidate>
-        <div class="form-group">
-            <label for="message">Conteudo</label>
-            <input type="text"
-                id="message-content"
-                class="form-control"
-                ngModel
-                name="messageContent"
-                required
-            >
+        <label for="message">Escreva uma mensagem:</label>
+        <div class="form-inline">
+            <div class="form-group" style="width: 89%;">
+                <input style="width: 100%;" type="text" id="message-content" class="form-control" ngModel
+                    name="messageContent" required>
+            </div>
+            <button type="submit" class="btn btn-primary">Enviar</button>
         </div>
-        <button type="submit" class="btn btn-primary">Salvar</button>
     </form>
 </div>

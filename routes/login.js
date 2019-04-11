@@ -5,38 +5,42 @@ const bcrypt = require('bcryptjs');
 const User = require('../models/user');
 const config = require('./config');
 
-router.post('/', function(req, res) {
+const INVALID_MSG = 'Usuario ou senha invalido';
+
+router.post('/', function (req, res) {
   const password = req.body.password;
 
-  User.findOne({ email: req.body.email }, function (err, user) {
+  User.findOne({
+    email: req.body.email
+  }, function (err, user) {
     if (err) {
       return res.status(500).json({
-        errorMessage: 'Erro ao recuperar usuario',
+        errorMessage: INVALID_MSG,
         error: err
       });
     }
 
     if (!user) {
       return res.status(404).json({
-        errorMessage: 'Usuario nao encontrado'
+        errorMessage: INVALID_MSG
       });
     }
 
     if (!bcrypt.compareSync(String(password), user.password)) {
       return res.status(401).json({
-        errorMessage: 'Usuario ou senha invalido'
+        errorMessage: INVALID_MSG
       });
     }
 
     const expiresIn = 24 * 60 * 60;
     const accessToken = jwt.sign({
-          id: user._id
-        }, config.secret, {
-      expiresIn:  expiresIn
+      id: user._id
+    }, config.secret, {
+      expiresIn: expiresIn
     });
 
     return res.status(201).json({
-      successMessage: 'Usuario autenticado com sucesso.',
+      successMessage: 'Usuario autenticado com sucesso',
       data: user,
       accessToken
     });

@@ -1,7 +1,7 @@
 <header>
     <nav>
         <ul class="nav nav-pills">
-            <li routerLinkActive="active">
+            <li routerLinkActive="active" *ngIf="authService.isAuthenticated">
                 <a [routerLink]="['mensagens']">Messages</a>
             </li>
             <li routerLinkActive="active" *ngIf="!authService.isAuthenticated">
@@ -9,7 +9,7 @@
             </li>
             <li *ngIf="authService.isAuthenticated"
                 style="width: 80%; height: 34px; padding-right: 15px; display: flex; justify-content: flex-end; align-items: center;">
-                Bem-vindo {{ authService.user.firstName }}!
+                Bem-vind{{ authService.user.genre == 'feminino' ? 'a' : 'o'}} {{ authService.user.firstName }}!
             </li>
             <li *ngIf="authService.isAuthenticated">
                 <div class="glyphicon glyphicon-menu-down" *ngIf="!showOptions" (click)="toggleOptions()"></div>
@@ -18,6 +18,10 @@
                     <div style="margin-bottom: 10px">
                         <div class="glyphicon glyphicon-user"></div>
                         {{ authService.user.email }}
+                    </div>
+                    <div style="margin-bottom: 10px">
+                        <div class="glyphicon glyphicon-map-marker"></div>
+                        {{ authService.user.estado }}
                     </div>
                     <button class="btn btn-default" (click)="exit()">Sair</button>
                 </div>

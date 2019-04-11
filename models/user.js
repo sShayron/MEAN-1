@@ -24,6 +24,10 @@ var userSchema = new Schema({
     type: String,
     required: false
   },
+  estado: {
+    type: String,
+    required: false
+  },
   messages: [{
     type: Schema.Types.ObjectId,
     ref: 'Message'

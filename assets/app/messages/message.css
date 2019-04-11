@@ -2,11 +2,14 @@
     display: inline-block;
     font-size: 12px;
     font-style: italic;
-    width: 80%;
+    width: 69%;
+}
+.data {
+    display: inline-block;
 }
 .config {
     display: inline-block;
     text-align: right;
     font-size: 12px;
-    width: 19%;
+    margin-left: 15px;
 }

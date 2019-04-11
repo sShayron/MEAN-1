@@ -1,7 +1,8 @@
 <div class="message-list">
     <div *ngIf="messageService.getMessages().length">
         <app-message *ngFor="let message of messageService.getMessages()" [message]="message"
-            (updateMessage)="onEditMessage($event)" (removeMessage)="onRemoveMessage($event)"></app-message>
+            [isMy]="isUserMessage(message)" (updateMessage)="onEditMessage($event)"
+            (removeMessage)="onRemoveMessage($event)"></app-message>
     </div>
 
     <app-message-form></app-message-form>

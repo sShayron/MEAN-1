@@ -1,29 +1,45 @@
-import { Component, Input, Output, EventEmitter } from '@angular/core';
+import { format } from 'date-fns';
+import { Component, Input, Output, EventEmitter, OnInit } from '@angular/core';
 import { Message } from './message.model';
 
 @Component({
-    selector: 'app-message',
-    templateUrl: './message.component.html',
-    styleUrls: ['./message.css']
+  selector: 'app-message',
+  templateUrl: './message.component.html',
+  styleUrls: ['./message.css']
 })
-export class MessageComponent {
-    @Input()
-    message: Message = new Message({
-        content: '',
-        author: ''
-    });
+export class MessageComponent implements OnInit {
+  @Input()
+  message: Message = new Message({
+    content: '',
+    user: {},
+    date: new Date()
+  });
 
-    @Output()
-    updateMessage = new EventEmitter<Message>();
+  @Input()
+  isMy: boolean;
 
-    @Output()
-    removeMessage = new EventEmitter<Message>();
+  @Output()
+  updateMessage = new EventEmitter<Message>();
 
-    onEdit() {
-        this.updateMessage.emit(this.message);
-    }
+  @Output()
+  removeMessage = new EventEmitter<Message>();
 
-    onRemove() {
-        this.removeMessage.emit(this.message);
-    }
+  @Output()
+  addedMessage = new EventEmitter<Message>();
+
+  get dataFormatada() {
+    return format(this.message.date, 'DD/MM/YYYY H:mm');
+  }
+
+  onEdit() {
+    this.updateMessage.emit(this.message);
+  }
+
+  onRemove() {
+    this.removeMessage.emit(this.message);
+  }
+
+  onAdd() {
+    this.addedMessage.emit(this.message);
+  }
 }

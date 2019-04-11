@@ -71,8 +71,8 @@ export class AuthService {
     this.router.navigate(['/auth']);
   }
 
-  register({ name, lastName = '', email, password, genre }) {
-    this.http.post('/register', { name, lastName, email, password, genre }).subscribe(
+  register({ name, lastName = '', email, password, genre, estado }) {
+    this.http.post('/register', { name, lastName, email, password, genre, estado }).subscribe(
       (res: LoginSuccessResponse) => {
         this.setSession(res.data, res.accessToken);
       },

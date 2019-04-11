@@ -11,13 +11,14 @@ router.post('/', (req, res) => {
     lastName: req.body.lastName,
     email: req.body.email,
     genre: req.body.genre,
-    password: bcrypt.hashSync(req.body.password)
+    password: bcrypt.hashSync(req.body.password),
+    estado: req.body.estado
   });
 
   newUser.save(function (err, result) {
     if (err) {
-      res.status(500).json({
-        errorMessage: 'Erro ao gravar usuario no banco de dados.',
+      return res.status(500).json({
+        errorMessage: 'Erro no servidor',
         error: err
       });
     }
@@ -29,8 +30,8 @@ router.post('/', (req, res) => {
       expiresIn: expiresIn
     });
 
-    res.status(201).json({
-      successMessage: 'Usuario criado com sucesso.',
+    return res.status(201).json({
+      successMessage: 'Usuario criado com sucesso',
       data: result,
       accessToken
     });

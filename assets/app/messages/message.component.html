@@ -5,21 +5,16 @@
         </div>
         <footer class="panel-footer">
             <div class="author">
-                {{ message.author }}
+                Autor: <b>{{ message.user.firstName }}</b>
+            </div>
+            <div class="data">
+                {{ dataFormatada }}
             </div>
             <div class="config">
-                <button
-                    type="button"
-                    class="btn btn-info"
-                    (click)="onEdit()"
-                >
+                <!-- <button type="button" class="btn btn-info" (click)="onEdit()">
                     Edit
-                </button>
-                <button
-                    type="button"
-                    class="btn btn-warning"
-                    (click)="onRemove()"
-                >
+                </button> -->
+                <button type="button" class="btn btn-warning" *ngIf="isMy" (click)="onRemove()">
                     Delete
                 </button>
             </div>
